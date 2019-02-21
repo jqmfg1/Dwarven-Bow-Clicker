@@ -7,6 +7,7 @@ var gold = 0;
 var perk_mod = 1;
 var bows_sold = 0;
 var bows_req = 10;
+var total_bows = 0;
 
 // selling stuff
 var haggling = 0;
@@ -90,11 +91,13 @@ function farmDwarven() {
 function makeBow() {
     if (dwarven >= 2 && iron >= 1) {
         bows = bows + 1;
+        total_bows = total_bows + 1;
         dwarven = dwarven - 2;
         iron = iron - 1;
         document.getElementById("dwarven").innerHTML = dwarven;
         document.getElementById("iron").innerHTML = iron;
         document.getElementById("bows").innerHTML = bows;
+        document.getElementById("total_bows").innerHTML = total_bows;
     }
 }
 
