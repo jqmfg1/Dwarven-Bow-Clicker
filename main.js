@@ -4,6 +4,15 @@ var ruins_left = 0;
 var mines_left = 0;
 var bows = 0;
 var gold = 0;
+var barter_items = 0;
+var barter_mod = 0;
+var perk_mod = 1;
+var bows_sold = 0;
+var bows_req = 10;
+var speech_items = 0;
+
+// levels
+var speech_lvl = 1;
 
 var ruins_list = ["Alftand", "Aetherium Forge", "Arkngthamz", "Avanchnzel", "Blackreach", "Bthardamz",
     "Deep Folk Crossing", "Irkngthand", "Kagrenzel", "Mzinchaleft", "Mzulft", "Nchuand-Zel", "Raldbthar",
@@ -27,6 +36,12 @@ var mines_list = ["Halted Stream Camp", "Fort Fellhammer", "Embershard Mine", "G
     "Traitor's Post", "Riverside Shack", "Eldergleam Sanctuary", "Rebel's Cairn", "South Cold Rock Pass",
     "Greywater Grotto", "Anga's Mill", "Forsaken Cave", "Hob's Fall Cave", "The Lady Stone", "Reachwind Eyrie",
     "Reachwater Rock", "Valtheim Towers", "Bloodlet Throne"];
+
+function bowPrice() {
+    speech_bonus = Math.max((speech_lvl - 5), 1) / 100;
+    speech_mod = Math.pow((1 + barter_mod), speech_items);
+    return Math.floor(270 * speech_bonus * speech_mod * perk_mod);
+}
 
 function discoverRuins() {
     len = ruins_list.length;
@@ -80,7 +95,18 @@ function makeBow() {
 function sellBow() {
     if (bows > 0) {
         bows = bows - 1;
-        gold = gold + 100;
+        gold = gold + bowPrice();
+        bows_sold = bows_sold + 1;
+        if (bows_sold >= bows_req) {
+            speech_lvl = speech_lvl + 1;
+            bows_req = 10 * Math.pow(2, speech_lvl - 1);
+            bows_sold = 0;
+            document.getElementById("speech_lvl").innerHTML = speech_lvl;
+            document.getElementById("bows_left").innerHTML = bows_req;
+        } else {
+            left = bows_req - bows_sold;
+            document.getElementById("bows_left").innerHTML = left;
+        }
         document.getElementById("bows").innerHTML = bows;
         document.getElementById("gold").innerHTML = gold;
     }
