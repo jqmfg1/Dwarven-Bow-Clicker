@@ -1,3 +1,12 @@
+@font-face {
+    font-family: skyrimFont;
+    src: url(https://github.com/jqmfg1/Dwarven-Bow-Clicker/raw/master/fonts/Skyrim_Font.ttf);
+}
+
+html {
+    font-family: skyrimFont;
+}
+
 body {
     background-image: url("https://raw.githubusercontent.com/jqmfg1/Dwarven-Bow-Clicker/master/imgs/Real_Dwarven_bow.jpg")
 }
