@@ -4,12 +4,15 @@ var ruins_left = 0;
 var mines_left = 0;
 var bows = 0;
 var gold = 0;
-var barter_items = 0;
-var barter_mod = 0;
 var perk_mod = 1;
 var bows_sold = 0;
 var bows_req = 10;
-var speech_items = 0;
+
+// selling stuff
+var haggling = 0;
+var allure = 0;
+var fortify_barter_potion = 0;
+var fortify_barter_equip_bless = 0;
 
 // levels
 var speech_lvl = 1;
@@ -37,10 +40,13 @@ var mines_list = ["Halted Stream Camp", "Fort Fellhammer", "Embershard Mine", "G
     "Greywater Grotto", "Anga's Mill", "Forsaken Cave", "Hob's Fall Cave", "The Lady Stone", "Reachwind Eyrie",
     "Reachwater Rock", "Valtheim Towers", "Bloodlet Throne"];
 
+//sell price factor = (3.3 - 1.3 * skill/100) / ((1 + Haggling %) * (1 + Allure %) *
+//(1 + Fortify Barter from potion) *
+//(1 + the sum of Fortify Barter from equipment + Fortify Barter from Blessing of Zenithar))
 function bowPrice() {
-    speech_bonus = Math.max((speech_lvl - 5), 1) / 100;
-    speech_mod = Math.pow((1 + barter_mod), speech_items);
-    return Math.floor(270 * speech_bonus * speech_mod * perk_mod);
+    denom = (1 + haggling) * (1 + allure) * (1 + fortify_barter_potion) * 1 + (fortify_barter_equip_bless);
+    factor = (3.3 - 1.3 * (speech_lvl / 100)) / denom;
+    return Math.floor(270 / factor);
 }
 
 function discoverRuins() {
