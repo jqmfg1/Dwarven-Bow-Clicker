@@ -9,13 +9,33 @@
 
         <h1>Dwarven Bow Clicker</h1>
 
-        Total Bows: <span id="totalbows">0</span>
-        Bow increase rate: <span id="rate">1</span>
-        <p></p>
+        <div class="row">
+            <div class="column">
+                <h3>Materials</h3>
+                Iron: <span id="iron">0</span>
+                <p></p>
+                Dwarven Ingots: <span id="dwarven">0</span>
+                <p></p>
+                Dwemer Ruins: <span id="ruins">Undiscovered</span
+                <p></p>
+                Iron Mines: <span id="mine">Undiscovered</span
+                <p></p>
+                Gold: <span id="gold">0</span>
+                
+                <h3>Items</h3>
+                Dwarven Bows: <span id="totalbows">0</span>
+                <p></p>
+            </div>
+            
+            <div class="column">
+                <button onClick="discoverMine()">Discover Iron Mine</button>
+                <button onClick="discoverRuins()">Discover Dwemer Ruins</button>
+                <button onClick="mineIron()">Mine Iron</button>
+                <button onClick="farmDwarven()">Farm Dwarven Ingots</button>
+                <button onClick="makeBow()">Make a Dwarven Bow</button>
+                <button onClick="sellBow()">Sell a Dwarven Bow</button>
+            </div>
+        </div>
 
-        <button onClick="bowClick(1)">1 Dwarven Bow</button>
-        <button onClick="bowClick(2)">2 Dwarven Bows</button>
-        <button onClick="increaseRate()">Increase Number</button>
-        <button onClick="bowClickRate()">Number of Bows</button>
     </body>
 </html>
