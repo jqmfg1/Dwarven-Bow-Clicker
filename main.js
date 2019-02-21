@@ -26,10 +26,10 @@ var mines_list = ["Halted Stream Camp", "Fort Fellhammer", "Embershard Mine", "G
     "Heartwood Mill", "Ansilvund", "Swindler's Den", "Half-Moon Mill", "Narzulbur", "Cragwallow Slope",
     "Traitor's Post", "Riverside Shack", "Eldergleam Sanctuary", "Rebel's Cairn", "South Cold Rock Pass",
     "Greywater Grotto", "Anga's Mill", "Forsaken Cave", "Hob's Fall Cave", "The Lady Stone", "Reachwind Eyrie",
-    "Reachwater Rock", "Valtheim Towers", "Bloodlet Throne"] 
+    "Reachwater Rock", "Valtheim Towers", "Bloodlet Throne"];
 
 function discoverRuins() {
-    len = ruins_list.length();
+    len = ruins_list.length;
     num = Math.floor(Math.random() * len);
     ruin = ruins_list[num];
     document.getElementById("ruins").innerHTML = ruin;
@@ -37,7 +37,7 @@ function discoverRuins() {
 }
 
 function discoverMine() {
-    len = mines_list.length();
+    len = mines_list.length;
     num = Math.floor(Math.random() * len);
     mine = mines_list[num];
     document.getElementById("mine").innerHTML = mine;
@@ -46,7 +46,7 @@ function discoverMine() {
 
 function mineIron() {
     if (mines_left > 0) {
-        ruins_left--;
+        mines_left--;
         if (mines_left == 0) {
             document.getElementById("mine").innerHTML = "Undiscovered";
         }
