@@ -78,7 +78,7 @@ function makeBow() {
 }
 
 function sellBow() {
-    if (bows > 1) {
+    if (bows > 0) {
         bows = bows - 1;
         gold = gold + 100;
         document.getElementById("bows").innerHTML = bows;
